@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="website icon" href="{{ url_for('static', filename='translator-logo.png') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Online Translator</h1>
+        </div>
+    </header>
+    <main>
+        <div class="div">
+            <form action="/translate" method="POST">
+                <!-- Text Area for Input -->
+                <textarea name="text" placeholder="Enter text to translate" class="textarea"></textarea>
+                
+                <!-- Dropdown for Language Selection -->
+                <input type="text" list="languages" style="width: 1px; border:  none;">
+                <select name="language" class="language-select" id="languages">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="zh-CN">Chinese</option>
+                    <option value="ja">Japanese</option>
+                    <option value="ko">Korean</option>
+                    <option value="it">Italian</option>
+                    <option value="ru">Russian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="ar">Arabic</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ur">Urdu</option>
+                    <option value="bn">Bengali</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="mr">Marathi</option>
+                    <option value="kn">Kannada</option>
+                    <option value="or">Odia</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="ne">Nepali</option>
+                    <option value="si">Sinhala</option>
+                    <option value="my">Myanmar</option>
+                    <option value="km">Khmer</option>
+                    <option value="lo">Lao</option>
+                    <option value="th">Thai</option>
+                    <option value="vi">Vietnamese</option>
+                    <option value="id">Indonesian</option>
+                    <option value="ms">Malay</option>
+                    <option value="tl">Tagalog</option>
+                    <option value="fil">Filipino</option>
+                    <option value="sw">Swahili</option>
+                    <option value="uz">Uzbek</option>
+                    <option value="bg">Bulgarian</option>
+                    <option value="el">Greek</option>
+                    <option value="ro">Romanian</option>
+                    <option value="et">Estonian</option>
+                    <option value="lv">Latvian</option>
+                    <option value="lt">Lithuanian</option>
+                    <option value="sl">Slovenian</option>
+                    <option value="sr">Serbian</option>
+                    <option value="cs">Czech</option>
+                    <option value="da">Danish</option>
+                    <option value="nl">Dutch</option>
+                    <option value="fi">Finnish</option>
+                    <option value="hu">Hungarian</option>
+                    <option value="is">Icelandic</option>
+                    <option value="no">Norwegian</option>
+                    <option value="pl">Polish</option>
+                    <option value="sv">Swedish</option>
+                    <option value="tr">Turkish</option>
+                    <option value="cy">Welsh</option>
+                    <option value="ka">Georgian</option>
+                    <option value="jw">Javanese</option>
+                    <option value="yo">Yoruba</option>
+                    <option value="ig">Igbo</option>
+                    <option value="ha">Hausa</option>
+                    <option value="ig">Igbo</option>
+                    <option value="yo">Yoruba</option>
+                    <option value="ig">Igbo</option>
+                    <option value="ha">Hausa</option>
+                </select>
+                
+                <!-- Translate Button -->
+                <button class="translate" type="submit">Translate</button>
+
+                <!-- Display Translation -->
+                <div class="show-translation">
+                    {% if translated_text %}
+                        <p>{{ translated_text }}</p>
+                    {% elif error %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
